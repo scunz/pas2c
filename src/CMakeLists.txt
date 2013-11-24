@@ -8,7 +8,7 @@ INCLUDE_DIRECTORIES(
 )
 
 SET(SRC_FILES
-    main/main.cpp
+    main.cpp
 )
 
 SET(HDR_FILES
