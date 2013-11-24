@@ -16,13 +16,17 @@
 
 #ifndef PASC_IF_PROJECT_HPP
 #define PASC_IF_PROJECT_HPP
+#pragma once
 
+// CoreUtils
 #include "PtrBase.hpp"
 #include "InputStream.hpp"
 #include "InputStreamRef.hpp"
 
+// Interfaces
 #include "InterfacesAPI.hpp"
 #include "LexicalAnalysis.hpp"
+#include "TokenTypes.hpp"
 
 class FactoryBase {
 public:
@@ -36,17 +40,21 @@ enum Factories {
 
 namespace Model {
     class Identifier;
+    class TypeStock;
     class RootUnit;
 }
 
+// This is somewhat an "application" class
 class PASC_INTERFACES_API Project : public PtrBase {
 public:
     typedef PtrT<Project> Ptr;
 
 public:
-    virtual Errors::Ptr errors() = 0;
+    virtual Errors::Ptr errors() const = 0;
     virtual InputStream::Ptr inputStreamFor(const QString& fileName) = 0;
     virtual PtrT<Model::RootUnit> getOrParseUnit(const Model::Identifier& name) = 0;
+
+    virtual PtrT<Model::TypeStock> stockType(TokenType tokenType) = 0;
 
 protected:
     virtual void setFactory(Factories type, FactoryBase* factory) = 0;

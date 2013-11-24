@@ -209,9 +209,11 @@ bool ProjectImpl::initialize() {
     return true;
 }
 
-Errors::Ptr ProjectImpl::errors() {
+Errors::Ptr ProjectImpl::errors() const {
     if (!mErrors) {
-        mErrors = new Errors;
+        Errors* e = new Errors;
+        const_cast<ProjectImpl*>(this)->mErrors = e;
+        return e;
     }
 
     return mErrors;
@@ -305,7 +307,7 @@ Model::Root::Ptr ProjectImpl::parseStream(TokenStream::Ptr stream) {
     FLOW_TRACER();
 
     Parsers::ContextStack::Ptr ctxStack = new Parsers::ContextStack;
-    QScopedPointer<Parsers::Pascal> rootParser(Parsers::Pascal::create(ctxStack, errors(), stream));
+    QScopedPointer<Parsers::Pascal> rootParser(Parsers::Pascal::create(ctxStack, this, stream));
 
     if (rootParser) {
         rootParser->setProject(this);
@@ -404,4 +406,30 @@ void ProjectImpl::emitError(const QString& text, const InputStreamRef& ref) {
 }
 
 void ProjectImpl::emitError(const char* text, const InputStreamRef& ref) {
+}
+
+static inline Model::TypeStock* stockFromTokenType(TokenType type) {
+    switch(type) {
+    case T_STRING:      return new Model::TypeStock(Model::dtString);
+    case T_INTEGER:     return new Model::TypeStock(Model::dtInteger);
+    case T_FLOAT:       return new Model::TypeStock(Model::dtFloat);
+    case T_BOOLEAN:     return new Model::TypeStock(Model::dtBoolean);
+    case T_FILE:        return new Model::TypeStock(Model::dtFile);
+    case T_POINTER:     return new Model::TypeStock(Model::dtPointer);
+    case T_TEXT:        return new Model::TypeStock(Model::dtText);
+    default:            return NULL;
+    }
+}
+
+Model::TypeStock::Ptr ProjectImpl::stockType(TokenType tokenType) {
+    Model::TypeStock::Ptr type = mStockTypes.value(tokenType, NULL);
+
+    if (!type) {
+        type = stockFromTokenType(tokenType);
+        if (type) {
+            mStockTypes.insert(tokenType, type);
+        }
+    }
+
+    return type;
 }

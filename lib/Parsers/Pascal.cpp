@@ -23,22 +23,23 @@
 namespace Parsers {
 
     Pascal* Pascal::create(const ContextStack::Ptr& ctxStack,
-                           Errors::Ptr errs,
+                           const Project::Ptr& project,
                            const TokenStream::Ptr& stream)
     {
         Pascal* result = NULL;
 
         switch (stream->ahead().type()) {
         case T_PROGRAM:
-            result = new Program(ctxStack, errs, stream);
+            result = new Program(ctxStack, project, stream);
             break;
 
         case T_UNIT:
-            result = new Unit(ctxStack, errs, stream);
+            result = new Unit(ctxStack, project, stream);
             break;
 
         default:
-            stream->ahead().inputStreamRef().emitError(errs, "Expected 'program' or 'unit'");
+            stream->ahead().inputStreamRef().emitError(project->errors(),
+                                                       "Expected 'program' or 'unit'");
             break;
         }
 

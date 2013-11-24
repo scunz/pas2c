@@ -19,10 +19,10 @@
 namespace Parsers {
 
     Base::Base(const ContextStack::Ptr& ctxStack,
-               const Errors::Ptr& errs,
+               const Project::Ptr& project,
                const TokenStream::Ptr& stream)
         : mCtxStack(ctxStack)
-        , mErrors(errs)
+        , mProject(project)
         , mStream(stream)
     {
     }
@@ -32,7 +32,7 @@ namespace Parsers {
     }
 
     void Base::emitError(const QString& text, const InputStreamRef& ref) {
-        ref.emitError(mErrors, text);
+        ref.emitError(errors(), text);
     }
 
     void Base::emitError(const char* text) {
@@ -40,7 +40,15 @@ namespace Parsers {
     }
 
     void Base::emitError(const char* text, const InputStreamRef& ref) {
-        ref.emitError(mErrors, text);
+        ref.emitError(errors(), text);
+    }
+
+    Project::Ptr Base::project() const {
+        return mProject;
+    }
+
+    Errors::Ptr Base::errors() const {
+        return mProject->errors();
     }
 
 }

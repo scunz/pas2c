@@ -35,11 +35,6 @@ namespace Model
         TypeStock() : mType(dtUnknown) {}
         TypeStock(DataTypes dt) : mType(dt) {}
 
-#if 0   // Violates architecture
-    public:
-        static TypeStock* fromTokenType(TokenType type);
-#endif
-
     public:
         void exportModel(ExportInfo& ei, QDomElement &elParent) const;
         void importModel(QDomElement &el);

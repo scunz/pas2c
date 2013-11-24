@@ -33,6 +33,7 @@
 
 // CodeModel
 #include "Model/Root/Unit.hpp"
+#include "Model/Type/Stock.hpp"
 
 // Project
 #include "ProjectAPI.hpp"
@@ -78,7 +79,7 @@ public:
     PascalModes mode() const;
 
 public:
-    Errors::Ptr errors();
+    Errors::Ptr errors() const;
     bool hasErrors();
     void dumpErrors();
 
@@ -91,6 +92,7 @@ public:
     void emitError(const QString& text, const InputStreamRef& ref);
 
     InputStream::Ptr inputStreamFor(const QString& fileName);
+    Model::TypeStock::Ptr stockType(TokenType tokenType);
 
 private:
     void setFactory(Factories type, FactoryBase* factory);
@@ -115,6 +117,8 @@ private:
     QStringList                 mUnitPaths;
     QString                     mOutputPath;
     InputStreamCollection       mInputStreams;
+    QHash<TokenType,
+          Model::TypeStock::Ptr> mStockTypes;
     QHash<Factories,
           FactoryBase*>         mFactories;
     QHash<Model::Identifier,

@@ -29,8 +29,10 @@ namespace Parsers {
     class PASC_PARSERS_API Pascal : public Base
     {
     protected:
-        Pascal(const ContextStack::Ptr& ctxStack, const Errors::Ptr& errs, const TokenStream::Ptr& stream)
-            : Base(ctxStack, errs, stream)
+        Pascal(const ContextStack::Ptr& ctxStack,
+               const Project::Ptr& project,
+               const TokenStream::Ptr& stream)
+            : Base(ctxStack, project, stream)
         {}
 
     public:
@@ -39,7 +41,7 @@ namespace Parsers {
 
     public:
         static Pascal* create(const ContextStack::Ptr& ctxStack,
-                              Errors::Ptr errs,
+                              const Project::Ptr& project,
                               const TokenStream::Ptr& stream);
 
     public:

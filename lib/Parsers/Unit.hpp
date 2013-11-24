@@ -27,8 +27,10 @@ namespace Parsers {
     class Unit : public Pascal
     {
     public:
-        Unit(const ContextStack::Ptr& ctxStack, const Errors::Ptr& errs, const TokenStream::Ptr& stream)
-            : Pascal(ctxStack, errs, stream)
+        Unit(const ContextStack::Ptr& ctxStack,
+             const Project::Ptr& project,
+             const TokenStream::Ptr& stream)
+            : Pascal(ctxStack, project, stream)
         {
             setModel(new Model::RootUnit);
         }

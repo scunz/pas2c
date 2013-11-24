@@ -24,6 +24,9 @@
 #include "Token.hpp"
 #include "TokenStream.hpp"
 
+// Interfaces
+#include "Project.hpp"
+
 // CodeModel
 #include "Model/Code.hpp"
 
@@ -36,12 +39,12 @@ namespace Parsers {
     {
     protected:
         Base(const ContextStack::Ptr&   ctxStack,
-             const Errors::Ptr&         errors,
+             const Project::Ptr&        project,
              const TokenStream::Ptr&    stream);
 
         Base(Base* father)
             : mCtxStack(father->mCtxStack)
-            , mErrors(father->mErrors)
+            , mProject(father->mProject)
             , mStream(father->mStream)
         {}
 
@@ -61,7 +64,6 @@ namespace Parsers {
         Model::Code::Ptr model() { return mModel; }
         ContextStack::Ptr contextStack() { return mCtxStack; }
         Context::Ptr curCtx() { return mCtxStack->top(); }
-        Errors::Ptr errors() { return mErrors; }
         TokenStream::Ptr stream() { mStream; }
 
     protected:
@@ -73,9 +75,13 @@ namespace Parsers {
         void emitError(const char* text);
         void emitError(const char* text, const InputStreamRef& ref);
 
+    public:
+        Project::Ptr project() const;
+        Errors::Ptr errors() const;
+
     private:
         ContextStack::Ptr   mCtxStack;
-        Errors::Ptr         mErrors;
+        Project::Ptr        mProject;
         TokenStream::Ptr    mStream;
         Model::Code::Ptr    mModel;
     };

@@ -52,14 +52,10 @@ namespace Parsers {
         case T_FILE:
         case T_POINTER:
         case T_TEXT: {
-            // ### Violation of architecture
-            #if 0
-            Model::TypeStock* type = Model::TypeStock::fromTokenType(ahead().type());
+            Model::TypeStock* type = project()->stockType(ahead().type());
             next();
             FAIL_IF_NOT(parseTypeCast(type));
             return true;
-            #endif
-            return false;
         }
 
         case T__IDENTIFIER: {

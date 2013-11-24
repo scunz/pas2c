@@ -75,21 +75,6 @@ namespace Model
         return oTypeStock;
     }
 
-    #if 0 // Violates Architecture
-    TypeStock* TypeStock::fromTokenType(TokenType type) {
-        switch(type) {
-            case T_STRING:      return new TypeStock(dtString);
-            case T_INTEGER:     return new TypeStock(dtInteger);
-            case T_FLOAT:       return new TypeStock(dtFloat);
-            case T_BOOLEAN:     return new TypeStock(dtBoolean);
-            case T_FILE:        return new TypeStock(dtFile);
-            case T_POINTER:     return new TypeStock(dtPointer);
-            case T_TEXT:        return new TypeStock(dtText);
-            default:            return NULL;
-        }
-    }
-    #endif
-
     DataTypes TypeStock::dataType() const {
         return mType;
     }
