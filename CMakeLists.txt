@@ -1,9 +1,10 @@
 
-PROJECT( PasC )
+PROJECT( Pas2CTranscoder )
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12)
 
 INCLUDE(cmake/Utils.cmake)
 SET_OUTPUT_PATHS()
 INCLUDE(cmake/QtMacros.cmake)
 
+ADD_SUBDIRECTORY(libs)
 ADD_SUBDIRECTORY(src)
