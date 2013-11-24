@@ -50,6 +50,6 @@ private:
     int mLine, mCol;
 };
 
-QDebug operator<<(QDebug dbg, const InputStreamRef& ref);
+PASC_CORE_UTILS_API QDebug operator<<(QDebug dbg, const InputStreamRef& ref);
 
 #endif

@@ -26,6 +26,8 @@ SET(SRC_FILES
 )
 
 SET(HDR_FILES
+    ParsersAPI.hpp
+
     Context.hpp
 
     Base.hpp

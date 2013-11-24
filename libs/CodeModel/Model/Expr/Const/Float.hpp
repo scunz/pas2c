@@ -23,7 +23,7 @@
 namespace Model
 {
 
-    class ExprConstDouble : public ExprConst
+    class PASC_CODE_MODEL_API ExprConstDouble : public ExprConst
     {
     public:
         typedef PtrT<ExprConstDouble> Ptr;

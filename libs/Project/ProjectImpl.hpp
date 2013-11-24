@@ -16,21 +16,30 @@
 
 #ifndef PASC_PROJECT_HPP
 #define PASC_PROJECT_HPP
+#pragma once
 
 #include <QStringList>
 
+// CoreUtils
 #include "PtrBase.hpp"
-
 #include "InputStream.hpp"
 #include "InputStreamCollection.hpp"
-#include "LexicalAnalysis.hpp"
+
+// Interfaces
 #include "Project.hpp"
 
+// LexAnal
+#include "LexicalAnalysis.hpp"
+
+// CodeModel
 #include "Model/Root/Unit.hpp"
+
+// Project
+#include "ProjectAPI.hpp"
 
 class QFile;
 
-class ProjectImpl : public Project
+class PASC_PROJECT_API ProjectImpl : public Project
 {
 public:
     typedef PtrT<ProjectImpl> Ptr;

@@ -17,6 +17,7 @@
 #ifndef PASC_PASCAL_PARSER_HPP
 #define PASC_PASCAL_PARSER_HPP
 
+#include "ParsersAPI.hpp"
 #include "Base.hpp"
 #include "Project.hpp"
 
@@ -25,7 +26,7 @@
 
 namespace Parsers {
 
-    class Pascal : public Base
+    class PASC_PARSERS_API Pascal : public Base
     {
     protected:
         Pascal(const ContextStack::Ptr& ctxStack, const Errors::Ptr& errs, const TokenStream::Ptr& stream)

@@ -128,7 +128,7 @@ namespace Model {
         // more...
     };
 
-    class Code : public PtrBase
+    class PASC_CODE_MODEL_API Code : public PtrBase
     {
     public:
         typedef PtrT<Code> Ptr;

@@ -28,9 +28,11 @@
 #include "Model/Decl.hpp"
 #include "Model/Decl/List.hpp"
 
+#include "ParsersAPI.hpp"
+
 namespace Parsers {
 
-    class Context : public PtrBase
+    class PASC_PARSERS_API Context : public PtrBase
     {
     public:
         typedef PtrT<Context> Ptr;
@@ -53,7 +55,7 @@ namespace Parsers {
         QVector<Model::DeclList::Ptr> mDeclsInScope;
     };
 
-    class ContextStack : public PtrBase
+    class PASC_PARSERS_API ContextStack : public PtrBase
     {
     public:
         typedef PtrT<ContextStack> Ptr;

@@ -19,11 +19,12 @@
 
 #include "Model/Type/Of.hpp"
 #include "Model/Decl/Type.hpp"
+#pragma once
 
 namespace Model
 {
 
-    class TypeFileOf : public TypeOf
+    class PASC_CODE_MODEL_API  TypeFileOf : public TypeOf
     {
     public:
         typedef PtrT<TypeFileOf> Ptr;

@@ -27,7 +27,7 @@
 namespace Model
 {
 
-    class DeclList: public Code
+    class PASC_CODE_MODEL_API DeclList: public Code
     {
     public:
         typedef PtrT<DeclList> Ptr;

@@ -16,10 +16,15 @@
 
 #ifndef PASC_LEXER_FACTORY_HPP
 #define PASC_LEXER_FACTORY_HPP
+#pragma once
 
+// Interfaces
 #include "Project.hpp"
 
-class LexerFactory : public FactoryBase {
+// LexAnal
+#include "LexAnalAPI.hpp"
+
+class PASC_LEX_ANAL_API LexerFactory : public FactoryBase {
 public:
     PtrBase* create();
 };

@@ -8,6 +8,7 @@ SET(SRC_FILES
 )
 
 SET(HDR_FILES
+    ProjectAPI.hpp
     ProjectImpl.hpp
 )
 
