@@ -5,6 +5,10 @@
 
 #include <QtGlobal>
 
+#ifdef BUILD_ALL_IN_ONE_LIB
+#define pascLexAnal_EXPORTS
+#endif
+
 #ifndef pascLexAnal_EXPORTS
 #define PASC_LEX_ANAL_API   Q_DECL_IMPORT
 #define PASC_LEX_ANAL_NO_INTERNALS

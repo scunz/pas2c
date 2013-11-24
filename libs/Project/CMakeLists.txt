@@ -3,14 +3,9 @@ PROJECT(PAS2C_PROJECT)
 
 QT_PREPARE(Core -Gui)
 
-SET(SRC_FILES
-    ProjectImpl.cpp
-)
-
-SET(HDR_FILES
-    ProjectAPI.hpp
-    ProjectImpl.hpp
-)
+INCLUDE(files.cmake)
+SET(SRC_FILES ${_SRC_FILES})
+SET(HDR_FILES ${_HDR_FILES})
 
 INCLUDE_DIRECTORIES(
     ${PAS2C_CORE_UTILS_SOURCE_DIR}
@@ -21,7 +16,7 @@ INCLUDE_DIRECTORIES(
 )
 
 ADD_QT_LIBRARY(
-    pascProject SHARED
+    pascProject ${LIB_SCOPE}
 
     ${SRC_FILES}
     ${HDR_FILES}

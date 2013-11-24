@@ -3,21 +3,9 @@ PROJECT(PAS2C_LEX_ANAL)
 
 QT_PREPARE(Core -Gui)
 
-SET(SRC_FILES
-    TokenImpl.cpp
-    TokenStreamImpl.cpp
-    LexicalAnalysis.cpp
-    LexicalAnalysisImpl.cpp
-    LexerFactory.cpp
-)
-
-SET(HDR_FILES
-    LexAnalAPI.hpp
-    TokenImpl.hpp
-    TokenStreamImpl.hpp
-    LexicalAnalysisImpl.hpp
-    LexerFactory.hpp
-)
+INCLUDE(files.cmake)
+SET(SRC_FILES ${_SRC_FILES})
+SET(HDR_FILES ${_HDR_FILES})
 
 INCLUDE_DIRECTORIES(
     ${PAS2C_CORE_UTILS_SOURCE_DIR}
@@ -26,7 +14,7 @@ INCLUDE_DIRECTORIES(
 )
 
 ADD_QT_LIBRARY(
-    pascLexAnal SHARED
+    pascLexAnal ${LIB_SCOPE}
 
     ${SRC_FILES}
     ${HDR_FILES}

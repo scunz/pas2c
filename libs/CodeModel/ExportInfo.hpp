@@ -47,10 +47,6 @@ namespace Model {
 
 }
 
-#else
-
-#error "XXX"
-
 #endif // PASC_CODE_MODEL_NO_INTERNALS
 
 #endif

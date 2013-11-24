@@ -5,6 +5,10 @@
 
 #include <QtGlobal>
 
+#ifdef BUILD_ALL_IN_ONE_LIB
+#define pascCodeModel_EXPORTS
+#endif
+
 #ifndef pascCodeModel_EXPORTS
 #define PASC_CODE_MODEL_API     Q_DECL_IMPORT
 #define PASC_CODE_MODEL_NO_INTERNALS

@@ -9,42 +9,12 @@ INCLUDE_DIRECTORIES(
     ${PAS2C_INTERFACES_SOURCE_DIR}
 )
 
-SET(SRC_FILES
-    Context.cpp
-
-    Base.cpp
-    Pascal.cpp
-    Unit.cpp
-    Program.cpp
-    DeclList.cpp
-    Type.cpp
-    IdentifierList.cpp
-    StmtList.cpp
-    Stmt.cpp
-    Expr.cpp
-    LValue.cpp
-)
-
-SET(HDR_FILES
-    ParsersAPI.hpp
-
-    Context.hpp
-
-    Base.hpp
-    Pascal.hpp
-    Unit.hpp
-    Program.hpp
-    DeclList.hpp
-    Type.hpp
-    IdentifierList.hpp
-    StmtList.hpp
-    Stmt.hpp
-    Expr.hpp
-    LValue.hpp
-)
+INCLUDE(files.cmake)
+SET(SRC_FILES ${_SRC_FILES})
+SET(HDR_FILES ${_HDR_FILES})
 
 ADD_QT_LIBRARY(
-    pascParsers SHARED
+    pascParsers ${LIB_SCOPE}
 
     ${SRC_FILES}
     ${HDR_FILES}

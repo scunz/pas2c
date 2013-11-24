@@ -28,13 +28,21 @@ ADD_QT_EXECUTABLE(
     ${HDR_FILES}
 )
 
-TARGET_LINK_LIBRARIES(
-    pas2c
+IF(${BUILD_MODE} STREQUAL "All-in-one-lib")
+    TARGET_LINK_LIBRARIES(
+        pas2c
+        LINK_PRIVATE
+            pascLibrary
+    )
+ELSE()
+    TARGET_LINK_LIBRARIES(
+        pas2c
 
-    LINK_PRIVATE
-        pascParsers
-        pascCodeModel
-        pascProject
-        pascLexAnal
-        pascCoreUtils
-)
+        LINK_PRIVATE
+            pascParsers
+            pascCodeModel
+            pascProject
+            pascLexAnal
+            pascCoreUtils
+    )
+ENDIF()

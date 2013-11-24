@@ -3,30 +3,12 @@ PROJECT(PAS2C_CORE_UTILS)
 
 QT_PREPARE(Core -Gui)
 
-SET(SRC_FILES
-    PtrBase.cpp
-    Error.cpp
-    Errors.cpp
-    FlowTracer.cpp
-    InputStream.cpp
-    InputStreamRef.cpp
-    InputStreamCollection.cpp
-)
-
-SET(HDR_FILES
-    CoreUtilsAPI.hpp
-    PtrBase.hpp
-    Error.hpp
-    Errors.hpp
-    FlowTracer.hpp
-    InputStream.hpp
-    InputStreamRef.hpp
-    InputStreamCollection.hpp
-    PtrT.hpp
-)
+INCLUDE(files.cmake)
+SET(SRC_FILES ${_SRC_FILES})
+SET(HDR_FILES ${_HDR_FILES})
 
 ADD_QT_LIBRARY(
-    pascCoreUtils SHARED
+    pascCoreUtils ${LIB_SCOPE}
 
     ${SRC_FILES}
     ${HDR_FILES}
